@@ -1,0 +1,47 @@
+<div class="form-container" [formGroup]="formGroup">
+  <div class="control">
+    <div class="close-container">
+      <label for="country">Country</label>
+      <button class="btn btn-close" (click)="removeForm()" [disabled]="formGroup.disabled"></button>
+    </div>
+    <input
+      id="country"
+      formControlName="country"
+      placeholder="Country"
+      list="countryList"
+      class="input-group"
+      [appShowError]="formGroup.get('country')"
+      errorKey="invalidCountry"
+      errorMessage="Please provide a correct Country"
+    />
+    <datalist id="countryList">
+      <option *ngFor="let country of countries" [value]="country"></option>
+    </datalist>
+  </div>
+
+  <div class="control">
+    <label for="username">Username</label>
+    <input
+      id="username"
+      formControlName="username"
+      placeholder="Username"
+      class="input-group"
+      [appShowError]="formGroup.get('username')"
+      errorKey="invalidUsername"
+      errorMessage="Please provide a correct Username"
+    >
+  </div>
+
+  <div class="control">
+    <label for="birthday">Birthday</label>
+    <input
+      id="birthday"
+      type="date"
+      formControlName="birthday"
+      class="input-group"
+      [appShowError]="formGroup.get('birthday')"
+      errorKey="invalidBirthday"
+      errorMessage="Please provide a correct Birthday"
+    >
+  </div>
+</div>

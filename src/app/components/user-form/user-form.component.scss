@@ -1,0 +1,23 @@
+.form-container {
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 200px;
+
+  .control + .control {
+    margin-top: 10px;
+  }
+
+  .close-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .has-error input {
+    border: 1px solid red;
+  }
+
+  .error-message {
+    color: red;
+  }
+}

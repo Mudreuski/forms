@@ -1,0 +1,16 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <button type="submit" [disabled]="!form.valid && form.enabled || !items.length" class="btn btn-primary" [ngClass]="{ 'btn-danger': isSubmitting}">
+    {{ isSubmitting ? 'Cancel' : 'Submit all forms' }}
+  </button>
+  <span *ngIf="!form.valid && form.enabled" class="m-lg-2">Invalid forms: {{ invalidGroupsCount$ | async}}</span>
+  <span *ngIf="isSubmitting" class="m-lg-2">Timer: {{ timer }} seconds</span>
+
+  <div formArrayName="items" class="items-container">
+    <div *ngFor="let item of items.controls; let i = index" [formGroupName]="i">
+      <app-custom-input [formGroup]="getFormGroup(i)" (onRemove)="deleteItem(i)"></app-custom-input>
+    </div>
+
+    <button *ngIf="!items.disabled &&  items.length < 10" type="button" (click)="addItem()" class="btn btn-outline-secondary add-button">Add Item</button>
+  </div>
+</form>
+
